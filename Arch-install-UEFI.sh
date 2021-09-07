@@ -10,7 +10,7 @@ echo "arch" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
-echo root:12345 | chpasswd
+echo root:password | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 # You can remove the tlp package if you are installing on a desktop or vm
@@ -20,7 +20,7 @@ pacman -S xorg grub efibootmgr networkmanager network-manager-applet dialog wpa_
 # pacman -S --noconfirm xf86-video-amdgpu
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/mnt/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
@@ -36,7 +36,7 @@ systemctl enable firewalld
 # systemctl enable acpid
 
 useradd -m killswitch
-echo killswitch:uttam | chpasswd
+echo killswitch:password | chpasswd
 
 
 echo "killswitch ALL=(ALL) ALL" >> /etc/sudoers.d/killswitch
