@@ -20,6 +20,7 @@ pacman -S xorg grub efibootmgr networkmanager network-manager-applet dialog wpa_
 # pacman -S --noconfirm xf86-video-amdgpu
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
+# uncomment this when you dont need dual boot
 echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
